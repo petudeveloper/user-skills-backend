@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const userRoutes = require('./api/routes/userRoutes');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
