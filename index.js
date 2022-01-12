@@ -1,56 +1,37 @@
 require('dotenv').config();
-require('./config/database')
-var express = require('express');
-var cors = require('cors');
-const mongoose = require('mongoose');
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-
+const connectDB = require('./config/database');
+const express = require('express');
+const cors = require('cors');
+const userRoutes = require('./api/routes/userRoutes');
 const app = express();
+const PORT = process.env.PORT || 5000;
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
+connectDB();
 
 app.use(express.json());
-app.use(cors());
 
-const User = require('./api/models/user');
+app.use(cors({
+  origin: ["http://localhost:3000/", "https://ecstatic-saha-5a0944.netlify.app/"],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
-app.post('/register', (req, res) => {
-  const username = req.body.username
-  const password = req.body.password
+app.use(cookieParser());
 
-  bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) {
-      console.log(err)
-    }
-    const user1 = new User({ username: username, password: hash });
-    user1.save().then(() => res.send("User created succesfully"));
-  })
+app.use(session({
+  key: "userId",
+  secret: "torreCo",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: 60 * 60 * 24,
+  },
+}));
 
-});
+app.use('/api/users', userRoutes);
 
-app.post('/login', (req, res) => {
-  const username = req.body.username
-  const password = req.body.password
-
-  User.find({ username: username }, (err, data) => {
-    if (err) {
-      res.send(err)
-    }
-    
-    if (data.length > 0) {
-      bcrypt.compare(password, data[0].password, (err, response) => {
-        if (response) {
-          res.send(data)
-        } else {
-          res.send({ message: "Wrong username/password combination" })
-        }
-      })
-    } else {
-      res.send({ message: "User doesn't exist" })
-    }
-  });
-});
-
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`server running on ${process.env.PORT}`)
 });
