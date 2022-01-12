@@ -11,7 +11,7 @@
 - Mongoose
 - Bcrypt
 
-[Live Demo Link)](https://livedemo.com)
+[Live Demo Link](https://livedemo.com)
 
 
 ## Getting Started
