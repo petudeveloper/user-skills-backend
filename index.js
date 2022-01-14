@@ -12,11 +12,7 @@ connectDB();
 
 app.use(express.json());
 
-app.use(cors({
-  origin: ["http://localhost:5000/", "https://ecstatic-saha-5a0944.netlify.app/"],
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+app.use(cors({origin:true,credentials: true}));
 
 app.use(cookieParser());
 
@@ -29,11 +25,6 @@ app.use(session({
     expires: 60 * 60 * 24,
   },
 }));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
 
 app.use('/api/users', userRoutes);
 
