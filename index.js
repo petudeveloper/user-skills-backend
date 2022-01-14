@@ -12,11 +12,7 @@ connectDB();
 
 app.use(express.json());
 
-app.use(cors({
-  origin: ["http://localhost:5000/", "https://ecstatic-saha-5a0944.netlify.app/"],
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+app.use(cors());
 
 app.use(cookieParser());
 
