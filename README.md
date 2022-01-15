@@ -1,6 +1,6 @@
 # user-skills-backend
 
-> This an an MVP(Minimum viable product) of the backend of a full-stack app. The front end of this app can be found [here](https://github.com/petudeveloper/user-skills).
+> This an MVP(Minimum viable product) of the backend of a full-stack app. The front end of this app can be found [here](https://github.com/petudeveloper/user-skills).
 
 This application was created with the MVC pattern.
 
