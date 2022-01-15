@@ -1,6 +1,8 @@
 # user-skills-backend
 
-> This is the backend of a full-stack app.
+> This an an MVP(Minimum viable product) of the backend of a full-stack app. The front end of this app can be found [here](https://github.com/petudeveloper/user-skills).
+
+This application was created with the MVC pattern.
 
 ## Built With
 
@@ -24,6 +26,11 @@ cd user-skills-backend
 npm install
 npm start
 ```
+
+## Endpoints
+The endpoints where design trying to following REST architecture
+- Create a new user: `/api/users/register`
+- Login with an existing user: `/api/users/login`
 
 ## Authors
 
