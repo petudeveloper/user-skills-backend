@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const userRoutes = require('./api/routes/userRoutes');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
@@ -12,11 +12,7 @@ connectDB();
 
 app.use(express.json());
 
-app.use(cors({
-  origin: ["http://localhost:3000/", "https://ecstatic-saha-5a0944.netlify.app/"],
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+app.use(cors({origin:true,credentials: true}));
 
 app.use(cookieParser());
 
