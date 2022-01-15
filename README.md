@@ -13,7 +13,7 @@ This application was created with the MVC pattern.
 - Mongoose
 - Bcrypt
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://user-skills-backend.herokuapp.com/)
 
 
 ## Getting Started
@@ -29,8 +29,8 @@ npm start
 
 ## Endpoints
 The endpoints where design trying to following REST architecture
-- Create a new user: `/api/users/register`
-- Login with an existing user: `/api/users/login`
+- Create a new user: `POST /api/users/register`
+- Login with an existing user: `POST /api/users/login`
 
 ## Authors
 
